@@ -1,4 +1,3 @@
-# 42 libft project
 ![image](https://github.com/user-attachments/assets/dd554072-9f32-4091-83e9-7f95400ca590)
 
 
