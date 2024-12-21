@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddivaev <ddivaev@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/21 11:37:01 by ddivaev           #+#    #+#             */
-/*   Updated: 2024/12/21 11:37:56 by ddivaev          ###   ########.fr       */
+/*   Created: 2024/12/21 11:27:55 by ddivaev           #+#    #+#             */
+/*   Updated: 2024/12/21 13:36:40 by ddivaev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * @brief Clears the entire list and frees the memory of each element.
+ * @brief Returns the last element of the list.
  *
- * @param lst The address of a pointer to the first element of the list.
- * @param del The function to delete the content of each element.
+ * @param lst The beginning of the list.
+ * @return t_list* The last element of the list. NULL if the list is empty.
  */
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+t_list	*ft_lstlast(t_list *lst)
 {
 	t_list	*tmp;
 
-	while (*lst)
-	{
-		tmp = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = tmp;
-	}
-	*lst = NULL;
+	if (!lst)
+		return (NULL);
+	tmp = lst;
+	while (tmp->next)
+		tmp = tmp->next;
+	return (tmp);
 }

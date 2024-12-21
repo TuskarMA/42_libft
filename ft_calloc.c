@@ -6,7 +6,7 @@
 /*   By: ddivaev <ddivaev@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 09:54:30 by ddivaev           #+#    #+#             */
-/*   Updated: 2024/12/21 09:55:39 by ddivaev          ###   ########.fr       */
+/*   Updated: 2024/12/21 13:07:01 by ddivaev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,15 @@
  * @param size Size of each element.
  * @return A pointer to the allocated memory, or NULL if the allocation fails.
  */
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	unsigned char	*tmp;
-	size_t			i;
+	void	*array;
 
-	i = 0;
-	tmp = malloc(count * size);
-	if (!tmp)
+	if (nmemb != 0 && size > SIZE_MAX / nmemb)
 		return (NULL);
-	while (i < count * size)
-		tmp[i++] = 0;
-	return (tmp);
+	array = malloc(nmemb * size);
+	if (array == NULL)
+		return (NULL);
+	ft_bzero(array, nmemb * size);
+	return (array);
 }

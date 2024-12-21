@@ -6,85 +6,80 @@
 /*   By: ddivaev <ddivaev@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 10:55:34 by ddivaev           #+#    #+#             */
-/*   Updated: 2024/12/21 10:58:37 by ddivaev          ###   ########.fr       */
+/*   Updated: 2024/12/21 13:30:41 by ddivaev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	int_len(long nbr);
-static char	*pre_conv(int len);
+/**
+ * @brief Converts an unsigned integer to a string.
+ *
+ * @param s The string to store the result.
+ * @param number The number to convert.
+ * @param len The length of the number.
+ * @return The resulting string.
+ */
+static char	*ft_char(char *s, unsigned int number, long int len)
+{
+	while (number > 0)
+	{
+		s[len--] = 48 + (number % 10);
+		number = number / 10;
+	}
+	return (s);
+}
 
 /**
- * @brief Converts an integer to a null-terminated string.
+ * @brief Calculates the length of the number when converted to a string.
+ *
+ * @param n The number to calculate the length for.
+ * @return The length of the number.
+ */
+static long int	ft_len(int n)
+{
+	int	len;
+
+	len = 0;
+	if (n <= 0)
+		len = 1;
+	while (n != 0)
+	{
+		len++;
+		n = n / 10;
+	}
+	return (len);
+}
+
+/**
+ * @brief Converts an integer to a string.
  *
  * @param n The integer to convert.
- * @return A pointer to the newly allocated string, or NULL if allocation fails.
+ * @return A pointer to the resulting string, or NULL if allocation fails.
  */
 char	*ft_itoa(int n)
 {
-	int		len;
-	int		i;
-	char	*result;
-	long	nbr;
+	char				*s;
+	long int			len;
+	unsigned int		number;
+	int					sign;
 
-	nbr = n;
-	len = int_len(nbr);
-	result = pre_conv(len);
-	if (!result)
+	sign = 1;
+	len = ft_len(n);
+	s = (char *)malloc(sizeof(char) * (len + 1));
+	if (!(s))
 		return (NULL);
-	while (nbr != 0)
-	{
-		result[i] = ((nbr % 10) + 48);
-		nbr = nbr / 10;
-		i--;
-	}
+	s[len--] = '\0';
+	if (n == 0)
+		s[0] = '0';
 	if (n < 0)
-		result[0] = '-';
-	result[len] = 0;
-	return (result);
-}
-
-/**
- * @brief Prepares a string for conversion by allocating memory
- * and initializing it.
- *
- * @param len The length of the string to allocate.
- * @return A pointer to the newly allocated string, or NULL if allocation fails.
- */
-static char	*pre_conv(int len)
-{
-	char	*tmp;
-
-	tmp = malloc((len + 1) * sizeof(char));
-	if (!tmp)
-		return (NULL);
-	tmp[0] = '0';
-	return (tmp);
-}
-
-/**
- * @brief Calculates the length of the string representation of a number.
- *
- * @param nbr The number to calculate the length for.
- * @return The length of the string representation of the number.
- */
-static int	len(long nbr)
-{
-	int	count;
-
-	count = 0;
-	if (nbr < 0)
 	{
-		count++;
-		nbr = -nbr;
+		sign *= -1;
+		number = n * -1;
+		s[0] = '-';
 	}
-	if (nbr == 0)
-		count++;
-	while (nbr != 0)
-	{
-		nbr /= 10;
-		count++;
-	}
-	return (count);
+	else
+		number = n;
+	s = ft_char(s, number, len);
+	return (s);
 }

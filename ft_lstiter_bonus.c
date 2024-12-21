@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddivaev <ddivaev@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/21 11:27:55 by ddivaev           #+#    #+#             */
-/*   Updated: 2024/12/21 11:28:36 by ddivaev          ###   ########.fr       */
+/*   Created: 2024/12/21 11:38:20 by ddivaev           #+#    #+#             */
+/*   Updated: 2024/12/21 13:36:31 by ddivaev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * @brief Returns the last element of the list.
+ * @brief Iterates through the list and applies the
+ * function 'f' to the content of each element.
  *
- * @param lst The beginning of the list.
- * @return t_list* The last element of the list. NULL if the list is empty.
+ * @param lst The address of a pointer to the first element of the list.
+ * @param f The function to apply to the content of each element.
  */
-t_list	*ft_lstlast(t_list *lst)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	t_list	*tmp;
 
-	if (!lst)
-		return (NULL);
 	tmp = lst;
-	while (tmp->next)
+	while (tmp)
+	{
+		f(tmp->content);
 		tmp = tmp->next;
-	return (tmp);
+	}
 }

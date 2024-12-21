@@ -6,7 +6,7 @@
 /*   By: ddivaev <ddivaev@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 09:20:43 by ddivaev           #+#    #+#             */
-/*   Updated: 2024/12/21 09:22:08 by ddivaev          ###   ########.fr       */
+/*   Updated: 2024/12/21 13:01:55 by ddivaev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,31 @@
  * @param len The number of bytes to move.
  * @return A pointer to `dst`.
  */
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*c_src;
-	char	*c_dst;
-	size_t	i;
+	size_t			i;
+	char			j;
+	unsigned char	*d;
+	unsigned char	*s;
 
-	if (!dst && !src)
-		return (NULL);
-	c_src = (char *) src;
-	c_dst = (char *) dst;
 	i = 0;
-	if (c_dst > c_src)
-		while (len-- > 0)
-			c_dst[len] = c_src[len];
-	else
+	j = 1;
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
+	if (!dest && !src)
+		return (NULL);
+	if (dest > src)
 	{
-		while (i++ < len)
-			c_dst[i] = c_src[i];
+		j = -1;
+		d += n - 1;
+		s += n - 1;
 	}
-	return (dst);
+	while (i < n)
+	{
+		*d = *s;
+		d += j;
+		s += j;
+		i++;
+	}
+	return (dest);
 }

@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddivaev <ddivaev@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/21 11:38:20 by ddivaev           #+#    #+#             */
-/*   Updated: 2024/12/21 11:39:30 by ddivaev          ###   ########.fr       */
+/*   Created: 2024/12/21 11:26:47 by ddivaev           #+#    #+#             */
+/*   Updated: 2024/12/21 13:37:08 by ddivaev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /**
- * @brief Iterates through the list and applies the
- * function 'f' to the content of each element.
+ * @brief Counts the number of elements in a list.
  *
- * @param lst The address of a pointer to the first element of the list.
- * @param f The function to apply to the content of each element.
+ * @param lst The beginning of the list.
+ * @return int The length of the list.
  */
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+int	ft_lstsize(t_list *lst)
 {
 	t_list	*tmp;
+	int		i;
 
 	tmp = lst;
+	i = 0;
 	while (tmp)
 	{
-		f(tmp->content);
 		tmp = tmp->next;
+		i++;
 	}
+	return (i);
 }

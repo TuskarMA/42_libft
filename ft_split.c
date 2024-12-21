@@ -6,7 +6,7 @@
 /*   By: ddivaev <ddivaev@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 10:41:30 by ddivaev           #+#    #+#             */
-/*   Updated: 2024/12/21 10:54:17 by ddivaev          ###   ########.fr       */
+/*   Updated: 2024/12/21 12:35:08 by ddivaev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,12 +137,8 @@ static void	ft_split_helper(const char *s, char c, char **res, int *s_word)
 char	**ft_split(const char *s, char c)
 {
 	char	**res;
-	size_t	i;
-	int		j;
 	int		s_word;
 
-	i = 0;
-	j = 0;
 	s_word = -1;
 	res = ft_calloc((word_count(s, c) + 1), sizeof(char *));
 	if (!res)
