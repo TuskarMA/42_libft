@@ -6,7 +6,7 @@
 /*   By: ddivaev <ddivaev@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 08:04:16 by ddivaev           #+#    #+#             */
-/*   Updated: 2024/12/21 11:42:55 by ddivaev          ###   ########.fr       */
+/*   Updated: 2024/12/21 11:43:30 by ddivaev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstnew(void *content);
-int	ft_lstsize(t_list *lst);
+int		ft_lstsize(t_list *lst);
 
 #endif
