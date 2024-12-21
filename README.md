@@ -2,12 +2,11 @@
 
 # 42 school libft project
 ![Build Status](https://github.com/TuskarMA/42_libft/actions/workflows/c-cpp.yml/badge.svg)
+
 Maded by [ddivaev](https://profile.intra.42.fr/users/ddivaev)
-## Code Quality
-![Code Quality](https://img.shields.io/github/workflow/status/yourusername/yourrepo/C%20Code%20Quality%20Check)
 
 ## libftTester results
-All test runned from linux ubuntu 24.04 (valgrind test)
+All test runned from `Ubuntu 24.04.1 LTS` (Valgrind testes)
 ### Mandatory
 ![image](https://github.com/user-attachments/assets/e9d5e389-d97c-4f5a-aac6-da3501f99502)
 
