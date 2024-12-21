@@ -1,0 +1,7 @@
+# JetBrains IDEs
+.idea
+.idea/*
+
+# Compiled output
+*.o
+*.out
